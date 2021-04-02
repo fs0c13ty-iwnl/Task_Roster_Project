@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html style = "height:100%;">
+<head>
+  <title>Task Roster</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/logo.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+  <link rel="icon" href="/images/check.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/d3821b4dc5.js" crossorigin="anonymous"></script>
+</head>
+
+<body id = "all">
+    <div id = "wrap">
+      <div id = "nav">
+        <!-- logo at the top -->
+          <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+          <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+          </svg>
+          <!-- grettings -->
+          <div class = "greetings">
+            <p><div id = "greet"></div><a id = "sname" class="piPage" href="/personalInfo.html">#You haven't logged in!#</a></p>
+          </div>
+        <br>
+        <!-- navs s1 -->
+          <nav class="sidenav">
+            <div id="ccd" class="sidenavB" onclick="displayDash();colorChangeDash();changeDirTitle();"><a href="#Dashboard"><i class="fas fa-calendar"></i>&nbsp;&nbsp;Dashboard</a></div>
+            <div id="cca" class="sidenavB" onclick="displayAllT();colorChangeAllT();changeDirTitle();getTasks()"><a href="#AllTasks"><i class="far fa-calendar-check"></i>&nbsp;&nbsp;All Tasks</a></div>
+            <div id="cci" class="sidenavB" onclick="displayIn();colorChangeIn();changeDirTitle();getPosts()"><a href="#Inbox"><i class="far fa-envelope fa-sm"></i>&nbsp;&nbsp;Inbox</a></div>
+          </nav>
+
+          <hr style = "border: 1px solid  #DCDCDC">
+          <!-- navs s2 -->
+          <div>
+            <div class = "menu">
+              <div id="colorL"class = "lists" onclick="displayLists();colorChange()"><a href="#lists">Lists</a></div>
+              <!-- vertical seperator -->
+              <div style = "float: left; height:30px; width:1px; border-right: 1px solid #DCDCDC"></div>
+              <div id="colorT"class = "tags" onclick="displayTags();colorChange()"><a href="#tags">Tags</a></div>
+              <div>
+                <br>
+                <br>
+              </div>
+              <!-- lists -->
+                <div id = "listsL" style = "display: ">
+                  <!-- addlist -->
+                <ul>
+                  <div id = "listsList" onclick="alert('SQL Related, Still Working On It')"><a href="#list1"><li style = "color: orange"><i class="fas fa-list"></i>&nbsp;&nbsp;List 1</li></a></div>
+                  <div id = "listsList" onclick="alert('SQL Related, Still Working On It')"><a href="#list2"><li style = "color: green"><i class="fas fa-list"></i>&nbsp;&nbsp;List 2</li></a></div>
+                  <div id = "listsList" onclick="alert('SQL Related, Still Working On It')"><a href="#list3"><li  style = "color: purple"><i class="fas fa-list"></i>&nbsp;&nbsp;List 3</li></a></div>
+                </ul>
+                <div class = "addLists" onclick="alert('SQL Related, Still Working On It')"><a href="#addLists" ><i class="fas fa-plus"></i>&nbsp;&nbsp;Add List</a></div>
+                </div>
+                <!-- tags -->
+                <div id = "tagsL" style = "display: none">
+                  <ul>
+                  <div id = "tagsList" onclick="alert('SQL Related, Still Working On It')"><a href="#tag1"><li  style = "color: blue"><i class="fas fa-tags"></i>&nbsp;&nbsp;Tag 1</li></a></div>
+                </ul>
+                  <!-- add tag -->
+                  <div class = "addTags" onclick="alert('SQL Related, Still Working On It')"><a href="#addTags" ><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Tag</a></div>
+                </div>
+                <hr style = "border: 1px solid  #DCDCDC">
+
+
+
+
+
+
+
+
+
+              <!-- logout button -->
+              <!--<div class="logout"><h3><a href="/logout" method="POST"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Log Out</a></h3></div>-->
+              <!--<div class="logout"><h3><a href="/logout" method="POST"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Log Out</a></h3></div>-->
+              <form class="logout" action="/logout" method="POST"><input type="submit" value="Logout"></form>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+<!-- search box -->
+    <div id = "main">
+        <div class="topnav">
+         <div  class="active"><a id="time"></a></div>
+         <div id="dir"><p>#title</p></div>
+          <div class="search-container">
+            <form>
+              <input type="text" placeholder="Search" name="search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+        </div>
+        <!-- main -->
+        <div style = "height: 100%">
+          <!-- dashboard -->
+           <div id = "dashboardPage" class = "dashboardPage" style="display: ">
+                <div class = "dashTitle">
+                          <h1><i class="fas fa-calendar"></i>&nbsp;&nbsp;Dashboard</h1>
+                            <div  class="RefreshDash" onclick="reloadP();"><a href="#Refresh"><i class="fas fa-sync-alt"></i>&nbsp;&nbsp;Refresh</a></div>
+                <hr style="border: 1px solid #DCDCDC">
+                <!-- <div id="AllCreatedTasksID" class="AllCreatedTasksPage">
+
+                </div> -->
+                <!--<pre>-->
+                <!--  |￣￣￣￣￣￣ |-->
+                <!--  |SQL related |-->
+                <!--  |  WORKING   |-->
+                <!--  |    ON      |-->
+                <!--  |     IT     |-->
+                <!--  | ＿＿＿＿＿__|-->
+                <!--  (\__/) ||-->
+                <!--  (•ㅅ•) ||-->
+                <!--  / 　 づ-->
+
+                <!--  |￣￣￣￣￣￣ |-->
+                <!--  |SQL related |-->
+                <!--  |  WORKING   |-->
+                <!--  |    ON      |-->
+                <!--  |     IT     |-->
+                <!--  | ＿＿＿＿＿__|-->
+                <!--  (\__/) ||-->
+                <!--  (•ㅅ•) ||-->
+                <!--  / 　 づ-->
+
+                <!--  |￣￣￣￣￣￣ |-->
+                <!--  |SQL related |-->
+                <!--  |  WORKING   |-->
+                <!--  |    ON      |-->
+                <!--  |     IT     |-->
+                <!--  | ＿＿＿＿＿__|-->
+                <!--  (\__/) ||-->
+                <!--  (•ㅅ•) ||-->
+                <!--  / 　 づ-->
+
+                <!--  |￣￣￣￣￣￣ |-->
+                <!--  |SQL related |-->
+                <!--  |  WORKING   |-->
+                <!--  |    ON      |-->
+                <!--  |     IT     |-->
+                <!--  | ＿＿＿＿＿__|-->
+                <!--  (\__/) ||-->
+                <!--  (•ㅅ•) ||-->
+                <!--  / 　 づ-->
+                <!--</pre>-->
+                <div id="AllCreatedTasksIDNew" >
+                  <h2 class="RT">Recent Task</a></h2>
+
+                </div>
+                <!--<hr style="border: 1px solid #DCDCDC">-->
+
+
+                <div id="AllPostsIDNew">
+                <h2 class="RA">Recent announcement</h2>
+
+                </div>
+
+                </div>
+           </div>
+
+
+           <!-- alltasks -->
+           <div id = "alltasksPage" class = "alltasksPage" style="display: none;">
+                <div class = "taskTitle">
+                          <h1><i class="far fa-calendar-check"></i>&nbsp;&nbsp;All Tasks</h1>
+                            <div  class="assignB" onclick="getTasks()"><a href="#Refresh"><i class="fas fa-sync-alt"></i>&nbsp;&nbsp;Refresh</a></div>
+                <hr style="border: 1px solid #DCDCDC">
+                <div id="AllCreatedTasksID" class="AllCreatedTasksPage">
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- <div id="eachTask">
+                            <p id="eTaskName">title</p>
+                            <p id="eTaskDue">due</p>
+                            <p id="eTaskInfo">This is a sentence </p>
+                          </div> -->
+
+                </div>
+
+
+
+
+                </div>
+           </div>
+          <!-- inbox -->
+           <div id = "inboxPage" class = "inboxPage" style="display: none;">
+                <div class = "annTitle">
+                          <h1><i class="far fa-envelope fa-sm"></i>&nbsp;&nbsp;Inbox</h1>
+                            <div  class="postB" onclick="getPosts()"><a href="#Refresh"><i class="fas fa-sync-alt"></i>&nbsp;&nbsp;Refresh</a></div>
+
+                   <!-- create task pop-up window to make new annoucements -->
+
+
+
+                        </div>
+                        <hr style="border: 1px solid #DCDCDC">
+                        <div id="AllPostsID" class="AllPostsPage">
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+
+                        </div>
+                   </div>
+           </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <script type="text/javascript">
+      document.getElementById("nav").style.height = document.getElementById("main").offsetHeight + "px";
+      //greetings
+      function Greetings(){
+        var datetime = new Date();
+        var hour = datetime.getHours();
+        var min = datetime.getMinutes();
+        var sec = datetime.getSeconds();
+        var strgreet = "";
+        strtime = hour + ":" + min + ":" + sec + " ";
+        if(hour >= 0  && hour < 5){
+          strgreet ="Good Morning, ";
+        }
+        if(hour >= 5  && hour < 8){
+          strgreet ="Good Morning, ";
+        }
+        if(hour >= 8  && hour < 13){
+          strgreet ="Good Day, ";
+        }
+
+        if(hour >= 13  && hour < 17){
+          strgreet ="Good Afternoon, ";
+        }
+        if(hour >= 17  && hour < 21){
+          strgreet ="Good Evening, ";
+        }
+        if(hour >= 21  && hour < 24){
+          strgreet ="Good Night, ";
+        }
+
+        window.setTimeout("ShowTime()",1000);
+        document.getElementById("greet").innerText=strgreet;
+      }
+      window.οnlοad=Greetings();
+
+      //if digits are now 2, add a zero before the digit
+      function fix(num, length) {
+        return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num;
+      }
+      //show time
+      function ShowTime(){
+        var date = new Date().toDateString();
+        var datetime2 = new Date();
+        var hour2 = datetime2.getHours();
+        var min2 = datetime2.getMinutes();
+        var sec2 = datetime2.getSeconds();
+        var strtime =fix(hour2,2)+":"+fix(min2,2)+":"+fix(sec2,2)+"  "+date;
+        document.getElementById("time").innerHTML="It's "+strtime+" now";
+        window.setTimeout("ShowTime()",1000);
+      }
+
+      window.οnlοad=ShowTime();
+
+      //window open&close for lists&tags
+        var lists = document.getElementById("listsL");
+        var tags = document.getElementById("tagsL");
+
+        function displayLists(){
+            if(lists.style.display == "none"){
+                lists.style.display = "";
+                tags.style.display = "none";
+          }
+       }
+
+        function displayTags(){
+                if(tags.style.display == "none"){
+                tags.style.display = "";
+                lists.style.display = "none";
+            }
+         }
+
+        //color change of the lists & tags
+        function colorChange(){
+                if (lists.style.display == ""){
+                  document.getElementById("colorL").className = "listsA";
+                  document.getElementById("colorT").className = "tags";
+                }else{
+                  document.getElementById("colorT").className = "tagsA";
+                  document.getElementById("colorL").className = "lists";
+              }
+            }
+        window.οnlοad=colorChange();
+
+
+        //window open&close
+        var dashboardPage2 = document.getElementById("dashboardPage");
+        var alltasksPage2 = document.getElementById("alltasksPage");
+        var inboxPage2 = document.getElementById("inboxPage");
+
+
+
+        function displayDash(){
+                  if(dashboardPage2.style.display == "none"){
+                      dashboardPage2.style.display = "";
+                      alltasksPage2.style.display = "none";
+                      inboxPage2.style.display = "none";
+                    }
+                 }
+
+
+        function displayAllT(){
+                if(alltasksPage2.style.display == "none"){
+                    alltasksPage2.style.display = "";
+                    dashboardPage2.style.display = "none";
+                    inboxPage2.style.display = "none";
+                  }
+               }
+
+        function displayIn(){
+                if(inboxPage2.style.display == "none"){
+                    inboxPage2.style.display = "";
+                    dashboardPage2.style.display = "none";
+                    alltasksPage2.style.display = "none";
+                  }
+               }
+
+
+        //colorchange for dashboard
+        function colorChangeDash(){
+                if (dashboardPage2.style.display == ""){
+                  document.getElementById("ccd").className = "sidenavBActive";
+                  document.getElementById("cca").className = "sidenavB";
+                  document.getElementById("cci").className = "sidenavB";
+                }
+            }
+
+        window.οnlοad=colorChangeDash();
+
+        //colorchange for dashboard
+        function colorChangeAllT(){
+                if (alltasksPage2.style.display == ""){
+                  document.getElementById("ccd").className = "sidenavB";
+                  document.getElementById("cca").className = "sidenavBActive";
+                  document.getElementById("cci").className = "sidenavB";
+            }
+          }
+
+        //colorchange for dashboard
+        function colorChangeIn(){
+                if (inboxPage2.style.display == ""){
+                  document.getElementById("ccd").className = "sidenavB";
+                  document.getElementById("cca").className = "sidenavB";
+                  document.getElementById("cci").className = "sidenavBActive";
+            }
+          }
+
+        //change directory title
+        function changeDirTitle (){
+                 if (dashboardPage2.style.display == ""){
+                    document.getElementById("dir").innerText = "Dashboard";
+                 }else if(alltasksPage2.style.display == ""){
+                    document.getElementById("dir").innerText = "All Tasks";
+                 }else if(inboxPage2.style.display == ""){
+                    document.getElementById("dir").innerText = "Inbox";
+                 }
+               }
+
+         window.οnlοad=changeDirTitle();
+
+
+          //append tasks
+        function appendTasks(task) {
+            var Div = document.createElement("div");
+            var Ti = document.createElement("p");
+            var Due = document.createElement("p");
+            var Con = document.createElement("p");
+            var tick = document.createElement("input");
+            var label = document.createElement("label");
+
+            Div.className = 'eachTask';
+            Ti.className = 'eTaskName';
+            Due.className = 'eTaskDue';
+            Con.className = 'eTaskInfo';
+            tick.className = "eTickBox";
+            label.className = "eLabel";
+
+
+            var timeStamp = task.TaskDue.split("T");
+            var timeStamp2 = timeStamp.join(' ');
+            var DueDate = timeStamp2;
+
+            tick.id = "checkbox";
+            tick.type = "checkbox";
+            tick.name = "checkbox";
+            label.for = "checkbox";
+            label.innerText = "Mark as complete";
+            // tick.innerText = "Mark as complete";
+
+            Div.appendChild(Ti);
+            Div.appendChild(Due);
+            Div.appendChild(Con);
+            Div.appendChild(tick);
+            Div.appendChild(label);
+            Ti.innerText = task.TaskName;
+            Due.innerText = "Due on " + DueDate + "   Assigned by " + task.author;
+            Con.innerText = task.TaskContent;
+            document.getElementById('AllCreatedTasksID').appendChild(Div);
+        }
+
+        //get tasks
+        function getTasks() {
+
+
+            var getTasksRequest = new XMLHttpRequest();
+            var Class = document.getElementsByClassName('eachTask');
+            var AllCreatedTasksID = document.getElementById('AllCreatedTasksID');
+            getTasksRequest.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    while (Class.length > 0) {
+                        AllCreatedTasksID.removeChild(Class[0]);
+                    }
+                    var Tasks = JSON.parse(getTasksRequest.responseText);
+                    for (var i = 0; i < 500; i++) {
+                        appendTasks(Tasks[i]);
+                    }
+                }
+            };
+            getTasksRequest.open("GET", "/getTasks", true);
+            getTasksRequest.send();
+
+
+        }
+
+        window.οnlοad=getTasks();
+
+        // Announcement Page
+        // Announcement Page
+        // Announcement Page
+        // Announcement Page
+        // Announcement Page
+        //create task
+
+        //append posts
+         function appendPosts(post) {
+            var Div2 = document.createElement("div");
+            var Ti2 = document.createElement("p");
+            var Time = document.createElement("p");
+            var Con2 = document.createElement("p");
+
+
+
+
+            Div2.className = 'eachPost';
+            Ti2.className = 'ePostName';
+            Time.className = 'ePostTime';
+            Con2.className = 'ePostInfo';
+
+            Div2.appendChild(Ti2);
+            Div2.appendChild(Time);
+            Div2.appendChild(Con2);
+            Ti2.innerText = post.PostTitle;
+            Time.innerText = "Posted on " + post.PostTime + "   By " + post.author;
+            Con2.innerText = post.PostContent;
+            document.getElementById('AllPostsID').appendChild(Div2);
+        }
+
+        //get tasks
+        // user ajax requests to get the usersame of the current session
+        function getPosts() {
+            var getPostsRequest = new XMLHttpRequest();
+            var Class2 = document.getElementsByClassName('eachPost');
+            var AllPostsID = document.getElementById('AllPostsID');
+            getPostsRequest.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    while (Class2.length > 0) {
+                        AllPostsID.removeChild(Class2[0]);
+                    }
+                    var Posts = JSON.parse(getPostsRequest.responseText);
+                    for (var i = 0; i < 500; i++) {
+                        appendPosts(Posts[i]);
+                    }
+                }
+            };
+            getPostsRequest.open("GET", "/getPosts", true);
+            getPostsRequest.send();
+        }
+
+
+    //get name for greetings
+
+    function getSName() {
+
+           var getSNameRequest = new XMLHttpRequest();
+           getSNameRequest.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                var name = JSON.parse(getSNameRequest.responseText);
+                document.getElementById("sname").innerText = name;
+           }
+
+        };
+            getSNameRequest.open("GET", "/users/profile", true);
+            getSNameRequest.send();
+    }
+
+    window.onload = getSName();
+
+
+  // DASHBOARD
+        //append newest task
+        function appendTasksNew(task) {
+            var Div = document.createElement("div");
+            var Ti = document.createElement("p");
+            var Due = document.createElement("p");
+            var Con = document.createElement("p");
+
+            Div.className = 'eachTask';
+            Ti.className = 'eTaskName';
+            Due.className = 'eTaskDue';
+            Con.className = 'eTaskInfo';
+
+            var timeStamp = task.TaskDue.split("T");
+            var timeStamp2 = timeStamp.join(' ');
+            var DueDate = timeStamp2;
+
+            Div.appendChild(Ti);
+            Div.appendChild(Due);
+            Div.appendChild(Con);
+            Ti.innerText = task.TaskName;
+            Due.innerText = "Due on " + DueDate + "   Assigned by " + task.author;
+            Con.innerText = task.TaskContent;
+            document.getElementById('AllCreatedTasksIDNew').appendChild(Div);
+        }
+
+        //get newest tasks
+        function getTasksNew() {
+
+
+            var getTasksRequest = new XMLHttpRequest();
+            // var Class = document.getElementdById('AllCreatedTasksIDNew');
+            var AllCreatedTasksID = document.getElementById('AllCreatedTasksIDNew');
+            getTasksRequest.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // while (Class.length > 0) {
+                    //     AllCreatedTasksID.removeChild(Class[0]);
+                    // }
+                    var Tasks = JSON.parse(getTasksRequest.responseText);
+
+                        appendTasksNew(Tasks[Tasks.length-1]);
+
+                }
+            };
+            getTasksRequest.open("GET", "/getTasks", true);
+            getTasksRequest.send();
+
+
+        }
+
+        window.οnlοad=getTasksNew();
+
+
+        // read newest ann
+        //append posts
+         function appendPostsNew(post) {
+            var Div2 = document.createElement("div");
+            var Ti2 = document.createElement("p");
+            var Time = document.createElement("p");
+            var Con2 = document.createElement("p");
+
+
+
+
+            Div2.className = 'eachPost';
+            Ti2.className = 'ePostName';
+            Time.className = 'ePostTime';
+            Con2.className = 'ePostInfo';
+
+            Div2.id = 'eachPostNew';
+            Ti2.id = 'ePostNameNew';
+            Time.id = 'ePostTimeNew';
+            Con2.id = 'ePostInfoNew';
+
+            Div2.appendChild(Ti2);
+            Div2.appendChild(Time);
+            Div2.appendChild(Con2);
+            Ti2.innerText = post.PostTitle;
+            Time.innerText = "Posted on " + post.PostTime + "   By " + post.author;
+            Con2.innerText = post.PostContent;
+            document.getElementById('AllPostsIDNew').appendChild(Div2);
+        }
+
+        //get posts
+
+        function getPostsNew() {
+            var getPostsRequest = new XMLHttpRequest();
+            // var Class2 = document.getElementById('eachPostNew').lastChild;
+            var AllPostsID = document.getElementById('AllPostsIDNew');
+            getPostsRequest.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var Posts = JSON.parse(getPostsRequest.responseText);
+
+                        appendPostsNew(Posts[Posts.length-1]);
+
+                }
+            };
+            getPostsRequest.open("GET", "/getPosts", true);
+            getPostsRequest.send();
+        }
+        window.onload=getPosts();
+        window.onload=getPostsNew();
+
+
+        function reloadP() {
+          location.reload();
+        }
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,813 @@
+    #all{
+      font-family: 'Montserrat', sans-serif;
+      font-family: 'Ubuntu', sans-serif;
+      /*height: auto;*/
+      overflow: hidden;
+    }
+
+    #wrap{
+
+      width: 1200px;
+      background-color: white;
+
+
+
+    }
+
+    #nav{
+      min-height: 780px;
+      width: 249px;
+      border-right: 1px solid  #DCDCDC;
+      background-color: #F8F8FF;
+      overflow: hidden;
+      float: left;
+      /*border-bottom: 1px solid #DCDCDC;*/
+    }
+
+    #main{
+      height: 780px;
+      width: 949px;
+      background-color: white;
+      float: left;
+      border-right: 1px solid  #DCDCDC;
+      overflow-y: auto;
+    }
+
+    /*greetings*/
+    #greet{
+      text-align: center;
+      position: relative;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .piPage {
+      text-decoration: none;
+      color: #6A5ACD;
+    }
+
+    .piPage:hover{
+      color: #483D8B;
+    }
+
+    .greetings{
+      font-size: 25px;
+      text-align: center;
+    }
+
+    /*side nav*/
+    .sidenav {
+
+      position: relative;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      overflow-x: hidden;
+      padding-top: 20px;
+      /*border-bottom: 1px solid  #DCDCDC; */
+    }
+
+   /* .sidenav a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 15px;
+      color: grey;
+      display: block;
+    }*/
+
+    .sidenavB a{
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 15px;
+      color: grey;
+      display: block;
+    }
+
+    .sidenavB{
+      background-color: #F8F8FF;
+      border-radius: 10px;
+      margin: 10px;
+      font-weight: lighter;
+    }
+
+    .sidenavB:hover{
+      background-color: #E6E6FA;
+    }
+
+    .sidenavBActive a{
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 15px;
+      color: black;
+      display: block;
+      font-style: bold;
+    }
+
+    .sidenavBActive{
+      background-color: #F8F8FF;
+      border-radius: 10px;
+      margin: 10px;
+      font-weight: lighter;
+    }
+
+    .sidenavBActive:hover{
+      background-color: #E6E6FA;
+    }
+/*search bar*/
+    .topnav {
+      height: 6.5%;
+      overflow: hidden;
+      background-color: #F5F5F5;
+    }
+
+    .topnav a {
+      float: left;
+      display: block;
+      color: black;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    #dir {
+      position: relative;
+      width: 100px;
+      float: left;
+      top:30%;
+      left: 160px;
+    }
+
+    .topnav a.active {
+      background-color: #F5F5F5;
+      color: black;
+    }
+
+    .topnav .search-container {
+      float: right;
+    }
+
+    .topnav input[type=text] {
+      padding: 6px;
+      margin-top: 8px;
+      font-size: 17px;
+      border-radius: 10px;
+      border:1px solid #DCDCDC;
+    }
+
+
+    .topnav input[type=text]:focus {
+      outline: none;
+      border: 1px solid #DCDCDC;
+      -webkit-box-shadow: 0px 0px 6px   #87CEFA;
+      -moz-box-shadow: 0px 0px 5px  #87CEFA;
+      box-shadow: 0px 0px 5px   #87CEFA;
+    }
+    .topnav .search-container button {
+      float: right;
+      padding: 6px 10px;
+      margin-top: 8px;
+      margin-right: 16px;
+      font-size: 17px;
+      border-radius: 10px;
+      border:1px solid #DCDCDC;
+      cursor: pointer;
+    }
+
+    .topnav .search-container button:hover {
+      background: #ccc;
+    }
+
+
+    /*lotout*/
+    /*.logout{*/
+    /*  background-color: #F8F8FF;*/
+    /*  width:100px;*/
+    /*  border-radius: 10px;*/
+    /*  margin: 10px;*/
+    /*  text-align: center;*/
+    /*  position: relative;*/
+    /*  bottom: -200px;*/
+    /*  left:50%;*/
+    /*}*/
+    /*.logout a{*/
+    /*  padding:6px;*/
+    /*  text-decoration: none;*/
+    /*  font-size: 15px;*/
+    /*  color: black;*/
+    /*  display: block;*/
+    /*}*/
+    /*.logout a:hover{*/
+    /*  background-color: #E6E6FA;*/
+    /*  border-radius: 10px;*/
+    /*}*/
+    /*.logout:hover{*/
+    /*  border-radius: 10px;*/
+    /*  background-color: #E6E6FA;*/
+    /*}*/
+
+    /*lotout*/
+    .logout input{
+      background-color: #F8F8FF;
+      width:100px;
+      border:1px solid grey;
+      border-radius: 10px;
+      margin: 10px;
+      text-align: center;
+      position: relative;
+      bottom: -55px;
+      left:120px;
+      padding:6px;
+      text-decoration: none;
+      font-size: 15px;
+      color: black;
+      display: block;
+    }
+
+    .logout input:hover{
+      background-color: #E6E6FA;
+      border-radius: 10px;
+    }
+
+
+    .logout form:focus{
+      border-radius: 10px;
+      background-color: #E6E6FA;
+    }
+
+
+    .dashboardPage{
+      height:93.5%;
+      width: 949px;
+      background-color: white;
+      float: left;
+      border-right: 1px solid  #DCDCDC;
+    }
+
+    .alltasksPage{
+      height:93.5%;
+      width: 949px;
+      background-color: white;
+      float: left;
+      border-right: 1px solid  #DCDCDC;
+    }
+
+    .inboxPage{
+      height:93.5%;
+      width: 949px;
+      background-color: white;
+      float: left;
+      border-right: 1px solid  #DCDCDC;
+    }
+
+
+
+
+
+
+    /*task title*/
+    .taskTitle {
+      height:100px;
+      width: 949px;
+      background-color: white;
+      float: left;
+      border-right: 1px solid  #DCDCDC;
+      color: grey;
+     /* border-bottom: 1px solid #DCDCDC;*/
+    }
+
+    .taskTitle h1{
+      top: 10px;
+      left: 60px;
+      position: relative;
+      color: #4169E1;
+    }
+
+    .taskTitle a{
+      bottom: 1px;
+      margin: 1px;
+      padding: 11px;
+      border-radius: 10px;
+      float: left;
+      position: relative;
+      text-decoration: none;
+      color: grey;
+
+    }
+
+    /*#taskTitle a:hover{
+      color:black;
+    }*/
+    /*Create button*/
+
+
+    .assignB {
+      text-align: center;
+      bottom: 50px;
+      left: 260px;
+      position: relative;
+      height: 38px;
+      width: 130px;
+      border-radius: 10px;
+      border: 1px solid #DCDCDC;
+    }
+
+
+    .assignB:hover{
+      outline: none;
+      border: 1px solid #DCDCDC;
+      -webkit-box-shadow: 0px 0px 6px green;
+      -moz-box-shadow: 0px 0px 5px green;
+      box-shadow: 0px 0px 5px green;
+    }
+
+    .taskTitle a:hover{
+      color: green;
+
+    }
+
+    .closeButtonA{
+      position: relative;
+      top: -30px;
+      left: 360px;
+    }
+
+
+
+    /*Create Tasks Page*/
+    .CreAssign input{
+      font-family: 'Montserrat', sans-serif;
+      font-family: 'Ubuntu', sans-serif;
+    }
+
+    .CreAssign h4{
+      color:grey;
+    }
+
+
+    .TaskName{
+      border: 1px solid #DCDCDC;
+      width: 500px;
+      height: 25px;
+      position: absolute;
+      top:180px;
+      left:30px;
+    }
+
+    .TaskInfo{
+      border: 1px solid #DCDCDC;
+      width: 500px;
+      height: 200px;
+      position: absolute;
+      top:275px;
+      left:30px;
+      OVERFLOW:visible;
+      resize: none;
+    }
+
+    .TaskDueDate {
+      color: grey;
+      position: absolute;
+      top:540px;
+      left:30px;
+      border: 1px solid #DCDCDC;
+    }
+
+    .TaskName:focus,.TaskInfo:focus,.TaskDue:focus {
+      outline: none;
+      border: 1px solid #DCDCDC;
+      -webkit-box-shadow: 0px 0px 6px   #87CEFA;
+      -moz-box-shadow: 0px 0px 5px  #87CEFA;
+      box-shadow: 0px 0px 5px   #87CEFA;
+    }
+
+    .CATitle{
+      position: absolute;
+      font-size: 170%;
+      top: 10px;
+      left:30px;
+    }
+
+    .CAName{
+      position: absolute;
+      top: 135px;
+      left: 30px;
+    }
+
+    .CAInfo{
+      top: 230px;
+      left: 30px;
+      position: absolute;
+    }
+
+    .CADue {
+      top: 495px;
+      left: 30px;
+      position: absolute;
+    }
+
+
+
+    /*Confirm Button*/
+    .createTaskB {
+      bottom:50px;
+      right:50px;
+      position: absolute;
+      text-align: center;
+      height: 38px;
+      width: 84px;
+      border-radius: 20px;
+      border: 1px solid #DCDCDC;
+      background-color: #4169E1;
+      color: white;
+    }
+
+
+    .createTaskB:hover {
+      outline: none;
+      /*border: 1px solid #DCDCDC;*/
+      /*-webkit-box-shadow: 0px 0px 6px blue;
+      -moz-box-shadow: 0px 0px 5px blue;
+      box-shadow: 0px 0px 5px blue;*/
+      background-color: #6495ED;
+    }
+
+
+
+
+    /*users page*/
+
+    /*dash title*/
+    .usrsTitle {
+      height:100px;
+      width: 949px;
+      background-color: white;
+      float: left;
+      border-right: 1px solid  #DCDCDC;
+      color: grey;
+     /* border-bottom: 1px solid #DCDCDC;*/
+    }
+
+    .usrsTitle h1{
+      top: 10px;
+      left: 60px;
+      position: relative;
+      color: #9370DB;
+    }
+
+    .usrsTitle a{
+      bottom: 1px;
+      margin: 1px;
+      padding: 11px;
+      border-radius: 10px;
+      float: left;
+      position: relative;
+      text-decoration: none;
+      color: grey;
+
+    }
+
+    .RefreshDash {
+      text-align: center;
+      bottom: 50px;
+      left: 220px;
+      position: relative;
+      height: 38px;
+      width: 110px;
+      border-radius: 10px;
+      border: 1px solid #DCDCDC;
+    }
+
+
+    .RefreshDash:hover{
+      outline: none;
+      border: 1px solid #DCDCDC;
+      -webkit-box-shadow: 0px 0px 6px green;
+      -moz-box-shadow: 0px 0px 5px green;
+      box-shadow: 0px 0px 5px green;
+    }
+
+    .usrsTitle a:hover{
+      color: green;
+
+    }
+
+    /*groups page*/
+    .gruTitle {
+      height:100px;
+      width: 949px;
+      background-color: white;
+      float: left;
+      border-right: 1px solid  #DCDCDC;
+      color: grey;
+     /* border-bottom: 1px solid #DCDCDC;*/
+    }
+
+    .gruTitle h1{
+      top: 10px;
+      left: 60px;
+      position: relative;
+      color: #228B22;
+    }
+
+    .gruTitle a{
+      bottom: 1px;
+      margin: 1px;
+      padding: 11px;
+      border-radius: 10px;
+      float: left;
+      position: relative;
+      text-decoration: none;
+      color: grey;
+
+    }
+
+    .RefreshDash {
+      text-align: center;
+      bottom: 50px;
+      left: 220px;
+      position: relative;
+      height: 38px;
+      width: 110px;
+      border-radius: 10px;
+      border: 1px solid #DCDCDC;
+    }
+
+
+    .RefreshDash:hover{
+      outline: none;
+      border: 1px solid #DCDCDC;
+      -webkit-box-shadow: 0px 0px 6px green;
+      -moz-box-shadow: 0px 0px 5px green;
+      box-shadow: 0px 0px 5px green;
+    }
+
+    .gruTitle a:hover{
+      color: green;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*All tasks*/
+    .eachTask {
+      border-bottom: 1px solid #DCDCDC;
+      padding: 5px 30px 5px 30px;
+    }
+
+
+    .eTaskName{
+      position: relative;
+      font-size: 170%;
+      display: inline-table;
+      font-weight: bold;
+      font-color: black;
+    }
+
+    .eTaskDue{
+      position: relative;
+      display: inline-table;
+      margin-left: 40px;
+      color: grey;
+    }
+
+    .eTaskInfo{
+      position: relative;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Announcements*/
+    /*task title*/
+    .annTitle {
+      height:100px;
+      width: 949px;
+      background-color: white;
+      float: left;
+      border-right: 1px solid  #DCDCDC;
+      color: grey;
+     /* border-bottom: 1px solid #DCDCDC;*/
+    }
+
+    .annTitle h1{
+      top: 10px;
+      left: 60px;
+      position: relative;
+      color: #FF7F50;
+    }
+
+    .annTitle a{
+      bottom: 1px;
+      margin: 1px;
+      padding: 11px;
+      border-radius: 10px;
+      float: left;
+      position: relative;
+      text-decoration: none;
+      color: grey;
+
+    }
+
+    /*#taskTitle a:hover{
+      color:black;
+    }*/
+    /*Create button*/
+
+
+    .postB {
+      text-align: center;
+      bottom: 50px;
+      left: 390px;
+      position: relative;
+      height: 38px;
+      width: 90px;
+      border-radius: 10px;
+      border: 1px solid #DCDCDC;
+    }
+
+
+    .postB:hover{
+      outline: none;
+      border: 1px solid #DCDCDC;
+      -webkit-box-shadow: 0px 0px 6px green;
+      -moz-box-shadow: 0px 0px 5px green;
+      box-shadow: 0px 0px 5px green;
+    }
+
+    .annTitle a:hover{
+      color: green;
+
+    }
+
+    .closeButtonA{
+      position: relative;
+      top: -30px;
+      left: 360px;
+    }
+
+
+
+    /*Create Tasks Page*/
+    .makePost input{
+      font-family: 'Montserrat', sans-serif;
+      font-family: 'Ubuntu', sans-serif;
+    }
+
+    .makePost h4{
+      color:grey;
+    }
+
+
+    .postName{
+      border: 1px solid #DCDCDC;
+      width: 500px;
+      height: 25px;
+      position: absolute;
+      top:180px;
+      left:30px;
+    }
+
+    .postInfo{
+      border: 1px solid #DCDCDC;
+      width: 500px;
+      height: 200px;
+      position: absolute;
+      top:275px;
+      left:30px;
+      OVERFLOW:visible;
+      resize: none;
+    }
+
+    /*.postTime {
+      color: grey;
+      position: absolute;
+      top:540px;
+      left:30px;
+      border: 1px solid #DCDCDC;
+    }*/
+
+    .postName:focus,.postInfo:focus {
+      outline: none;
+      border: 1px solid #DCDCDC;
+      -webkit-box-shadow: 0px 0px 6px   #87CEFA;
+      -moz-box-shadow: 0px 0px 5px  #87CEFA;
+      box-shadow: 0px 0px 5px   #87CEFA;
+    }
+
+    .MPTitle{
+      position: absolute;
+      font-size: 170%;
+      top: 10px;
+      left:30px;
+    }
+
+    .MPName{
+      position: absolute;
+      top: 135px;
+      left: 30px;
+    }
+
+    .MPInfo{
+      top: 230px;
+      left: 30px;
+      position: absolute;
+    }
+
+    .MPTime {
+      top: 495px;
+      left: 30px;
+      position: absolute;
+    }
+
+
+
+    /*Confirm Button*/
+    .makePostB {
+      bottom:50px;
+      right:50px;
+      position: absolute;
+      text-align: center;
+      height: 38px;
+      width: 84px;
+      border-radius: 20px;
+      border: 1px solid #DCDCDC;
+      background-color: #4169E1;
+      color: white;
+    }
+
+
+    .makePostB:hover {
+      outline: none;
+      /*border: 1px solid #DCDCDC;*/
+      /*-webkit-box-shadow: 0px 0px 6px blue;
+      -moz-box-shadow: 0px 0px 5px blue;
+      box-shadow: 0px 0px 5px blue;*/
+      background-color: #6495ED;
+    }
+
+
+
+    /*All Posts*/
+    .eachPost {
+      border-bottom: 1px solid #DCDCDC;
+      padding: 5px 30px 5px 30px;
+    }
+
+
+    .ePostName{
+      position: relative;
+      font-size: 170%;
+      display: inline-table;
+      font-weight: bold;
+      color: black;
+    }
+
+    .ePostTime{
+      position: relative;
+      display: inline-table;
+      margin-left: 40px;
+      color: grey;
+    }
+
+    .ePostInfo{
+      position: relative;
+
+    }
+
+
+
+
+
+
+
+

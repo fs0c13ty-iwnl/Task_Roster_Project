@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html style = "height:100%;">
+<head>
+  <title>Task Rofster</title>
+  <link rel="icon" href="/images/check.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/logo.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/manager.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/closeButton.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/modal.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/d3821b4dc5.js" crossorigin="anonymous"></script>
+</head>
+
+<body id = "all">
+
+    <div id = "wrap">
+      <div id = "nav">
+        <!-- logo at the top -->
+          <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+          <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+          </svg>
+          <!-- grettings -->
+          <div class = "greetings">
+            <p><div id = "greet"></div><a id = "sname"class="piPage"href="/personalInfo.html">#You haven't logged in!#</a></p>
+          </div>
+        <br>
+        <!-- navs s1 -->
+          <nav class="sidenav">
+            <div id="ccd" class="sidenavB" onclick="displayDash();colorChangeDash();changeDirTitle();getTasks()"><a href="#Tasks"><i class="fas fa-book"></i>&nbsp;&nbsp;Tasks</a></div>
+            <div id="cca" class="sidenavB" onclick="displayAllT();colorChangeAllT();changeDirTitle()"><a href="#Users"><i class="fas fa-user"></i>&nbsp;&nbsp;Users</a></div>
+            <div id="cci" class="sidenavB" onclick="displayIn();colorChangeIn();changeDirTitle()"><a href="#Groups"><i class="fas fa-user-friends fa-xs"></i>&nbsp;&nbsp;Groups</a></div>
+            <div id="ccan" class="sidenavB" onclick="displayAnn();colorChangeAnn();changeDirTitle();getPosts()"><a href="#Announcements"><i class="fas fa-bullhorn fa-sm"></i>&nbsp;&nbsp;Announcements</a></div>
+          </nav>
+
+          <hr style = "border: 1px solid  #DCDCDC">
+          <!-- navs s2 -->
+
+
+
+
+
+
+              <!-- logout button -->
+              <!--<div class="logout"><h3><a href="/logout"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Log Out</a></h3></div>-->
+              <form class="logout" action="/logout" method="POST"><input type="submit" value="Logout"></form>
+            </div>
+
+
+
+        <!-- search box -->
+            <div id = "main">
+                <div class="topnav">
+                 <div  class="active"><a id="time"></a></div>
+                 <div id="dir"><p>#title</p></div>
+                  <div class="search-container">
+                    <form>
+                      <input type="text" placeholder="Search" name="search">
+                      <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                  </div>
+                </div>
+                <!-- main -->
+                <div style = "height: 100%">
+                  <!-- Tasks -->
+                   <div id = "tasksPage" class = "tasksPage" style="display: ">
+                        <div class = "taskTitle">
+                          <h1><i class="fas fa-book"></i>&nbsp;&nbsp;Tasks</h1>
+                            <div  class="assignB" onclick="disappearAssign()"><a href="#assignPage"><i class="fas fa-plus"></i>&nbsp;&nbsp;Create Task</a></div>
+
+                <!-- create task pop-up window -->
+                              <div id="modal1" class="modal" style="display: none">
+                                  <div class="container">
+                                      <div class="closeButtonA">
+                                      <span class="close-container" onclick="disappearAssign()">
+                                        <span class="leftright"></span>
+                                        <span class="rightleft"></span>
+                                      </span>
+                                      </div>
+                                        <form class="CreAssign" action="/users/addTask" method="POST" onsubmit="addTask();getTasks();disappearAssign()">
+                                            <p class="CATitle">Create Tasks</p>
+                                            <!-- <hr> -->
+
+                                            <h4 class="CAName">Title</h4>
+                                            <input id="taskTitleID" class="TaskName"type="text" name="TaskName" placeholder="Name your task..." required>
+                                            <h4 class="CAInfo">Description</h4>
+                                            <textarea id="taskInfoID" class="TaskInfo" cols="2" rows="20" name="TaskContent" placeholder="Describe your task..." required></textarea>
+                                            <h4 class="CADue">Due Time</h4>
+                                            <input id="taskDueID" class="TaskDueDate" type="datetime-local" name="TaskDue"required>
+                                            <!-- <input id="taskDueID" class="TaskDue" type="datetime-local" required> -->
+
+                                            <input  class="createTaskB" type="submit" name="Confirm" value="Confirm">
+                                        </form>
+                                        <!--<iframe id="form_iframe" name="form_iframe" style="display:none;"></iframe>-->
+                                        <!-- <input  class="createTaskB" type="submit" name="Confirm" value="Confirm" onclick="addTask();getTasks();" onsubmit="disappearAssign()"> -->
+                                        <!-- <div class="createTaskB"><a href="#createTasks" onclick="addTask();getTasks();disappearAssign()">Confirm</a></div> -->
+                                  </div>
+                              </div>
+
+
+                        </div>
+                        <hr style="border: 1px solid #DCDCDC">
+                        <div id="AllCreatedTasksID" class="AllCreatedTasksPage">
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- <div id="eachTask">
+                            <p id="eTaskName">title</p>
+                            <p id="eTaskDue">due</p>
+                            <p id="eTaskInfo">This is a sentence </p>
+                          </div> -->
+
+                        </div>
+                   </div>
+
+
+
+
+
+
+
+                   <!-- users page -->
+                   <div id = "usrsPage" class = "usrsPage" style="display: none;">
+                          <div class = "usrsTitle">
+                                    <h1><i class="fas fa-user"></i>&nbsp;&nbsp;Users</h1>
+                                      <div  class="RefreshDash" onclick=""><a href="#Refresh"><i class="fas fa-sync-alt"></i>&nbsp;&nbsp;Refresh</a></div>
+                          <hr style="border: 1px solid #DCDCDC">
+                          <!-- <div id="AllCreatedTasksID" class="AllCreatedTasksPage">
+
+                          </div> -->
+                          <pre>
+                            |￣￣￣￣￣￣ |
+                            |            |
+                            |  WORKING   |
+                            |    ON      |
+                            |     IT     |
+                            | ＿＿＿＿＿__|
+                            (\__/) ||
+                            (•ㅅ•) ||
+                            / 　 づ
+
+                            |￣￣￣￣￣￣ |
+                            |            |
+                            |  WORKING   |
+                            |    ON      |
+                            |     IT     |
+                            | ＿＿＿＿＿__|
+                            (\__/) ||
+                            (•ㅅ•) ||
+                            / 　 づ
+
+                            |￣￣￣￣￣￣ |
+                            |           |
+                            |  WORKING   |
+                            |    ON      |
+                            |     IT     |
+                            | ＿＿＿＿＿__|
+                            (\__/) ||
+                            (•ㅅ•) ||
+                            / 　 づ
+
+                            |￣￣￣￣￣￣ |
+                            |            |
+                            |  WORKING   |
+                            |    ON      |
+                            |     IT     |
+                            | ＿＿＿＿＿__|
+                            (\__/) ||
+                            (•ㅅ•) ||
+                            / 　 づ
+                          </pre>
+
+
+
+                          </div>
+                     </div>
+
+
+
+
+
+
+                  <!-- groups -->
+                   <div id = "gruPage" class = "gruPage" style="display: none;">
+                        <div class = "gruTitle">
+                                    <h1><i class="fas fa-user-friends fa-xs"></i>&nbsp;&nbsp;Groups</h1>
+                                      <div  class="RefreshDash" onclick=""><a href="#Refresh"><i class="fas fa-sync-alt"></i>&nbsp;&nbsp;Refresh</a></div>
+                          <hr style="border: 1px solid #DCDCDC">
+                          <!-- <div id="AllCreatedTasksID" class="AllCreatedTasksPage">
+
+                          </div> -->
+                          <pre>
+                                                  |￣￣￣￣￣￣ |
+                                                  |            |
+                                                  |  WORKING   |
+                                                  |    ON      |
+                                                  |     IT     |
+                                                  | ＿＿＿＿＿__|
+                                                  (\__/) ||
+                                                  (•ㅅ•) ||
+                                                  / 　 づ
+
+                                                  |￣￣￣￣￣￣ |
+                                                  |            |
+                                                  |  WORKING   |
+                                                  |    ON      |
+                                                  |     IT     |
+                                                  | ＿＿＿＿＿__|
+                                                  (\__/) ||
+                                                  (•ㅅ•) ||
+                                                  / 　 づ
+
+                                                  |￣￣￣￣￣￣ |
+                                                  |            |
+                                                  |  WORKING   |
+                                                  |    ON      |
+                                                  |     IT     |
+                                                  | ＿＿＿＿＿__|
+                                                  (\__/) ||
+                                                  (•ㅅ•) ||
+                                                  / 　 づ
+
+                                                  |￣￣￣￣￣￣ |
+                                                  |            |
+                                                  |  WORKING   |
+                                                  |    ON      |
+                                                  |     IT     |
+                                                  | ＿＿＿＿＿__|
+                                                  (\__/) ||
+                                                  (•ㅅ•) ||
+                                                  / 　 づ
+                          </pre>
+
+                        </div>
+                   </div>
+
+
+
+
+
+                   <!-- announcements -->
+                   <div id = "annPage" class = "annPage" style="display: none;">
+                        <div class = "annTitle">
+                          <h1><i class="fas fa-bullhorn fa-sm"></i>&nbsp;&nbsp;Announcements</h1>
+                            <div  class="postB" onclick="disappearPost()"><a href="#postPage"><i class="fas fa-plus"></i>&nbsp;&nbsp;Post</a></div>
+
+                   <!-- create task pop-up window to make new annoucements -->
+                              <div id="modal2" class="modal2" style="display: none">
+                                  <div class="container2">
+                                      <div class="closeButtonA">
+                                      <span class="close-container" onclick="disappearPost()">
+                                        <span class="leftright"></span>
+                                        <span class="rightleft"></span>
+                                      </span>
+                                      </div>
+                                        <form class="makePost" action="/users/addPost" method="POST" onsubmit="getPosts();disappearPost()" target="nm_iframe">
+                                            <p class="MPTitle">Make Announcement</p>
+                                            <!-- <hr> -->
+
+                                            <h4 class="MPName">Title</h4>
+                                            <input id="postTitleID" class="postName"type="text" name="PostTitle" placeholder="Name your annoucements..." required>
+                                            <h4 class="MPInfo">Description</h4>
+                                            <textarea id="postInfoID" class="postInfo" cols="2" rows="20" name="PostContent" placeholder="Put your content here..." required></textarea>
+                                            <h4 class="MPTime" id="time2"></h4>
+                                            <input type="hidden" id="time3" name="PostTime">
+                                            <input class="makePostB" type="submit" value="Confirm">
+                                        </form>
+                                        <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
+                                  </div>
+                              </div>
+
+
+                        </div>
+                        <hr style="border: 1px solid #DCDCDC">
+                        <div id="AllPostsID" class="AllPostsPage">
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+                          <!-- auto append all task -->
+
+                        </div>
+                   </div>
+                </div>
+
+
+
+
+
+              </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+      // document.getElementById("nav").style.height = document.body.clientHeight+1000+"px";
+      // document.getElementById("nav").style.height = document.getElementById("main").offsetHeight + "px";
+      // document.getElementById("nav").style.padding-bottom = document.body.offsetHeight+"px";
+      //greetings
+      function Greetings(){
+        var datetime = new Date();
+        var hour = datetime.getHours();
+        var min = datetime.getMinutes();
+        var sec = datetime.getSeconds();
+        var strgreet = "";
+        strtime = hour + ":" + min + ":" + sec + " ";
+        if(hour >= 0  && hour < 5){
+          strgreet ="Good Morning, ";
+        }
+        if(hour >= 5  && hour < 8){
+          strgreet ="Good Morning, ";
+        }
+        if(hour >= 8  && hour < 13){
+          strgreet ="Good Day, ";
+        }
+
+        if(hour >= 13  && hour < 17){
+          strgreet ="Good Afternoon, ";
+        }
+        if(hour >= 17  && hour < 21){
+          strgreet ="Good Evening, ";
+        }
+        if(hour >= 21  && hour < 24){
+          strgreet ="Good Night, ";
+        }
+
+        window.setTimeout("ShowTime()",1000);
+        document.getElementById("greet").innerText=strgreet;
+      }
+      window.οnlοad=Greetings();
+
+      //show time
+
+      //if digits are now 2, add a zero before the digit
+      function fix(num, length) {
+        return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num;
+      }
+      //show time
+      function ShowTime(){
+        var date = new Date().toDateString();
+        var datetime2 = new Date();
+        var hour2 = datetime2.getHours();
+        var min2 = datetime2.getMinutes();
+        var sec2 = datetime2.getSeconds();
+        var strtime = fix(hour2,2)+":"+fix(min2,2)+":"+fix(sec2,2)+"  "+date;
+        document.getElementById("time").innerHTML="It's "+strtime+" now";
+        document.getElementById("time2").innerHTML="Posted on "+strtime;
+        document.getElementById("time3").value = strtime;
+        window.setTimeout("ShowTime()",1000);
+      }
+
+      window.οnlοad=ShowTime();
+
+
+
+        //window open&close
+        var tasksPage2 = document.getElementById("tasksPage");
+        var stuPage2 = document.getElementById("usrsPage");
+        var gruPage2 = document.getElementById("gruPage");
+        var annPage2 = document.getElementById("annPage");
+
+
+
+        function displayDash(){
+                  if(tasksPage2.style.display == "none"){
+                      tasksPage2.style.display = "";
+                      stuPage2.style.display = "none";
+                      gruPage2.style.display = "none";
+                      annPage2.style.display = "none";
+                    }
+                 }
+
+
+        function displayAllT(){
+                if(stuPage2.style.display == "none"){
+                    stuPage2.style.display = "";
+                    tasksPage2.style.display = "none";
+                    gruPage2.style.display = "none";
+                    annPage2.style.display = "none";
+                  }
+               }
+
+        function displayIn(){
+                if(gruPage2.style.display == "none"){
+                    gruPage2.style.display = "";
+                    tasksPage2.style.display = "none";
+                    stuPage2.style.display = "none";
+                    annPage2.style.display = "none";
+                  }
+               }
+
+        function displayAnn(){
+                if(annPage2.style.display = "none"){
+                    annPage2.style.display = "";
+                    gruPage2.style.display = "none";
+                    tasksPage2.style.display = "none";
+                    stuPage2.style.display = "none";
+                  }
+               }
+
+        //colorchange for tasks
+        function colorChangeDash(){
+                if (tasksPage2.style.display == ""){
+                  document.getElementById("ccd").className = "sidenavBActive";
+                  document.getElementById("cca").className = "sidenavB";
+                  document.getElementById("cci").className = "sidenavB";
+                  document.getElementById("ccan").className = "sidenavB";
+                }
+            }
+
+        window.οnlοad=colorChangeDash();
+
+        //colorchange for students
+        function colorChangeAllT(){
+                if (stuPage2.style.display == ""){
+                  document.getElementById("ccd").className = "sidenavB";
+                  document.getElementById("cca").className = "sidenavBActive";
+                  document.getElementById("cci").className = "sidenavB";
+                  document.getElementById("ccan").className = "sidenavB";
+            }
+          }
+
+        //colorchange for groups
+        function colorChangeIn(){
+                if (gruPage2.style.display == ""){
+                  document.getElementById("ccd").className = "sidenavB";
+                  document.getElementById("cca").className = "sidenavB";
+                  document.getElementById("ccan").className = "sidenavB";
+                  document.getElementById("cci").className = "sidenavBActive";
+            }
+          }
+
+        //colorchange for annoucements
+        function colorChangeAnn(){
+                if (annPage2.style.display == ""){
+                  document.getElementById("ccd").className = "sidenavB";
+                  document.getElementById("cca").className = "sidenavB";
+                  document.getElementById("cci").className = "sidenavB";
+                  document.getElementById("ccan").className = "sidenavBActive";
+            }
+          }
+
+        //change directory title
+        function changeDirTitle (){
+                 if (tasksPage2.style.display == ""){
+                    document.getElementById("dir").innerText = "Tasks";
+                 }else if(stuPage2.style.display == ""){
+                    document.getElementById("dir").innerText = "Users";
+                 }else if(gruPage2.style.display == ""){
+                    document.getElementById("dir").innerText = "Groups";
+                 }else if(annPage2.style.display == ""){
+                    document.getElementById("dir").innerText = "Announcements";
+               }
+             }
+
+         window.οnlοad=changeDirTitle();
+
+
+
+
+
+        //display & disappear assign page
+
+
+        function disappearAssign() {
+          if (document.getElementById("modal1").style.display == "") {
+            document.getElementById("modal1").style.display = "none";
+          }else{
+            document.getElementById("modal1").style.display = "";
+          }
+        }
+
+
+        //if empty
+        // function emptycheck1(){
+        //   if(document.getElementById("taskTitleID").value=="" || ){
+        //       alert("Please fill the box!");
+        //     return;
+        //   }
+        // }
+        //display & disappear post page
+
+        function disappearPost() {
+          if (document.getElementById("modal2").style.display == "") {
+            document.getElementById("modal2").style.display = "none";
+          }else{
+            document.getElementById("modal2").style.display = "";
+          }
+        }
+
+
+
+        //create task
+
+        // function addTask() {
+        //     var title = document.getElementById("taskTitleID").value;
+        //     var content = document.getElementById("taskInfoID").value;
+        //     var timeStamp = document.getElementById("taskDueID").value.split("T");
+        //     var timeStamp2 = timeStamp.join(' ');
+        //     var DueDate = timeStamp2;
+        //     var addTaskRequest = new XMLHttpRequest();
+
+        //         addTaskRequest.onreadystatechange = function() {
+        //             if (addTaskRequest.readyState == 4) {
+        //                 if (addTaskRequest.status == 200) {
+        //                     console.log("Successfully Added");
+        //                 }
+        //                 if (addTaskRequest.status == 404) {
+        //                     console.log('404 Not Found');
+        //                 }
+        //             }
+        //         };
+
+        //     addTaskRequest.open('POST', "/users/addTask", true);
+        //     addTaskRequest.setRequestHeader("Content-type", "application/json");
+        //     addTaskRequest.send(JSON.stringify({ "author": author, "title": title, "DueDate": DueDate, "content": content }));
+        // }
+
+
+        //append tasks
+        function appendTasks(task) {
+            var Div = document.createElement("div");
+            var Ti = document.createElement("p");
+            var Due = document.createElement("p");
+            var Con = document.createElement("p");
+
+            Div.className = 'eachTask';
+            Ti.className = 'eTaskName';
+            Due.className = 'eTaskDue';
+            Con.className = 'eTaskInfo';
+
+            var timeStamp = task.TaskDue.split("T");
+            var timeStamp2 = timeStamp.join(' ');
+            var DueDate = timeStamp2;
+
+            Div.appendChild(Ti);
+            Div.appendChild(Due);
+            Div.appendChild(Con);
+            Ti.innerText = task.TaskName;
+            Due.innerText = "Due on " + DueDate + "   Assigned by " + task.author;
+            Con.innerText = task.TaskContent;
+            document.getElementById('AllCreatedTasksID').appendChild(Div);
+        }
+
+        //get tasks
+        function getTasks() {
+
+
+            var getTasksRequest = new XMLHttpRequest();
+            var Class = document.getElementsByClassName('eachTask');
+            var AllCreatedTasksID = document.getElementById('AllCreatedTasksID');
+            getTasksRequest.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    while (Class.length > 0) {
+                        AllCreatedTasksID.removeChild(Class[0]);
+                    }
+                    var Tasks = JSON.parse(getTasksRequest.responseText);
+                    for (var i = 0; i < 500; i++) {
+                        appendTasks(Tasks[i]);
+                    }
+                }
+            };
+            getTasksRequest.open("GET", "/getTasks", true);
+            getTasksRequest.send();
+
+
+        }
+
+        window.οnlοad=getTasks();
+
+        // function goback() {
+        //   window.location.href="/manager.html";
+        // }
+
+
+        // Announcement Page
+        // Announcement Page
+        // Announcement Page
+        // Announcement Page
+        // Announcement Page
+        //create task
+
+
+
+
+        //append tasks
+        function appendPosts(post) {
+            var Div2 = document.createElement("div");
+            var Ti2 = document.createElement("p");
+            var Time = document.createElement("p");
+            var Con2 = document.createElement("p");
+
+
+
+
+            Div2.className = 'eachPost';
+            Ti2.className = 'ePostName';
+            Time.className = 'ePostTime';
+            Con2.className = 'ePostInfo';
+
+            Div2.appendChild(Ti2);
+            Div2.appendChild(Time);
+            Div2.appendChild(Con2);
+            Ti2.innerText = post.PostTitle;
+            Time.innerText = "Posted on " + post.PostTime + "   By " + post.author;
+            Con2.innerText = post.PostContent;
+            document.getElementById('AllPostsID').appendChild(Div2);
+        }
+
+        //get tasks
+        function getPosts() {
+            var getPostsRequest = new XMLHttpRequest();
+            var Class2 = document.getElementsByClassName('eachPost');
+            var AllPostsID = document.getElementById('AllPostsID');
+            getPostsRequest.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    while (Class2.length > 0) {
+                        AllPostsID.removeChild(Class2[0]);
+                    }
+                    var Posts = JSON.parse(getPostsRequest.responseText);
+                    for (var i = 0; i < 500; i++) {
+                        appendPosts(Posts[i]);
+                    }
+                }
+            };
+            getPostsRequest.open("GET", "/getPosts", true);
+            getPostsRequest.send();
+        }
+
+
+
+ //get name
+    function getSName() {
+
+           var getSNameRequest = new XMLHttpRequest();
+           getSNameRequest.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                var name = JSON.parse(getSNameRequest.responseText);
+                document.getElementById("sname").innerText = name;
+           }
+
+        };
+            getSNameRequest.open("GET", "/users/profile", true);
+            getSNameRequest.send();
+    }
+
+    window.onload = getSName();
+
+
+    </script>
+
+
+</body>
+</html>

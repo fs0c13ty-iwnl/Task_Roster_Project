@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit Personal Information</title>
+	<link rel="icon" href="/images/check.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/personalInfo.css">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  	<script src="https://kit.fontawesome.com/d3821b4dc5.js" crossorigin="anonymous"></script>
+</head>
+<body id="all">
+
+	<div id="personalInfoPage">
+		<div class="returnB"><a href="javascript:history.back(-1)"><i class="fas fa-arrow-left"></i>  Return</a></div>
+		<h1><i class="far fa-user"></i>  Edit Information</h1>
+		<br>
+		<form action="/updateINFO" method="POST" class="editInfo" target="form_iframe" >
+			<input type="text" id="id"name="userID" readonly="readonly" value="0000000" placeholder="User ID" onclick="alert('You cannot change your ID')" required>
+			<input type="text" id="username"name="username" value="Nick" placeholder="Username"required>
+			<input type="text" id="password" name="password" value="00000000" placeholder="Password" required>
+			<input type="text" id="FirstName" name="FirstName" value="Nick" placeholder="First Name" required>
+			<input type="text" id="LastName" name="LastName" value="Fury" placeholder="Last Name" required>
+			<input type="text" id="Email" name="Email" value="12312124@xxxx.com" placeholder="E-mail Adress" required>
+			<input type="text" id="PhoneNum" name="PhoneNum" value="423466499" placeholder="Phone Number" required>
+
+			<input class="submitB" type="submit" name="submit" value="Confirm">
+		</form>
+		<iframe id="form_iframe" name="form_iframe" style="display:none;"></iframe>
+	</div>
+
+	<script>
+		function getINFO() {
+
+           var getINFORequest = new XMLHttpRequest();
+           getINFORequest.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                var info = JSON.parse(getINFORequest.responseText);
+                document.getElementById("id").value = info[0].id;
+                document.getElementById("username").value = info[0].username;
+                document.getElementById("password").value = info[0].password;
+                document.getElementById("FirstName").value = info[0].FirstName;
+                document.getElementById("LastName").value = info[0].LastName;
+                document.getElementById("Email").value = info[0].Email;
+                document.getElementById("PhoneNum").value = info[0].PhoneNum;
+			}
+
+        };
+            getINFORequest.open("GET", "/profileA", true);
+            getINFORequest.send();
+    }
+
+    window.onload = getINFO();
+
+    function alertSuc() {
+		alert("Successfully Updated!");
+    }
+
+
+
+	</script>
+
+</body>
+</html>

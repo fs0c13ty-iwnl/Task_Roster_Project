@@ -1,0 +1,149 @@
+#border{
+        text-align: center;
+        background-color: #fff;
+        border-radius: 20px;
+        border:1px solid #000;
+        width: 450px;
+        height: 550px;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    #all{
+        display:;
+        text-align: center;
+        background-color: #fff;
+        border-radius: 20px;
+        width: 300px;
+        height: 350px;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 180;
+    }
+
+    #registerPage{
+        text-align: center;
+        background-color: #fff;
+        border-radius: 20px;
+        width: 450px;
+        height: 550px;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .login-form {
+      width: 300px;
+      margin: 0 auto;
+      font-family: Tahoma, Geneva, sans-serif;
+    }
+    .login-form h1 {
+      text-align: center;
+      color: #4d4d4d;
+      font-size: 24px;
+      padding: 20px 0 20px 0;
+    }
+    .login-form input[type="password"],
+    .login-form input[type="text"] {
+
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #dddddd;
+      margin-bottom: 15px;
+      box-sizing:border-box;
+    }
+    .login-form input[type="submit"] {
+      width: 100%;
+      padding: 15px;
+      background-color: #535b63;
+      border: 0;
+      box-sizing: border-box;
+      cursor: pointer;
+      font-weight: bold;
+      color: #ffffff;
+    }
+    .login-form select {
+      border-radius: 10px;
+      border:1px solid #dddddd;
+    }
+
+
+    #Rtext{
+      position: absolute;
+      bottom: 20px;
+      right: 10px;
+      text-decoration:none;
+      color: #4586F3;
+      font-family: Tahoma, Geneva, sans-serif;
+    }
+
+    .register-form h1 {
+      text-align: center;
+      color: #4d4d4d;
+      font-size: 24px;
+      padding: 20px 0 20px 0;
+    }
+
+    .register-form input[type="password"],
+    .register-form input[type="text"],
+    .register-form input[type="password2"] {
+
+      width: 80%;
+      padding: 15px;
+      border: 1px solid #dddddd;
+      margin-bottom: 15px;
+      box-sizing:border-box;
+    }
+
+    .register-form input[type="submit"] {
+      width: 80%;
+      padding: 15px;
+      background-color: #535b63;
+      border: 0;
+      box-sizing: border-box;
+      cursor: pointer;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+  .managerLB {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: #535b63;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: #ffffff;
+  }
+
+  .managerLB:hover {
+    background-color: grey;
+  }
+
+  .managerLB a{
+    text-decoration: none;
+    color: white;
+  }
+
+
+
+
+
+
+
+
+
+
+
+

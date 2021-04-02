@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+
+</body>
+</html>
+	<head>
+		<meta charset="utf-8" name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+		<title>Task Roster</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/logo.css">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/closeButton.css">
+		<link rel="icon" href="/images/check.ico" type="image/x-icon">
+
+	</head>
+	<body>
+		<div id ="border">
+
+		<div class="login-form" id="all">
+			<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+				<circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+			</svg>
+			<h1>Welcome!</h1>
+			<!-- <form action="auth" method="POST"> -->
+				<form action="/login" method="POST">
+				<input type="text" name="username" placeholder="Username" required>
+				<input type="password" name="password" placeholder="Password" required>
+				<br>
+				<select name="AccountTypeL" size="1">
+					<option value='0'>Login as Manager</option>
+					<option value='1'>Login as User</option>
+				</select>
+				<br>
+				<hr style="border: 1px solid #DCDCDC">
+				<div id="my-signin2"></div>
+					<script>
+					function onSuccess(googleUser) {
+						console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+					}
+					function onFailure(error) {
+						console.log(error);
+					}
+					function renderButton() {
+					gapi.signin2.render('my-signin2', {
+						'scope': 'profile email',
+						'width': 300,
+						'height': 50,
+						'longtitle': true,
+						'theme': 'dark',
+						'onsuccess': onSuccess,
+						'onfailure': onFailure
+					});
+					}
+					</script>
+
+					  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+				<br>
+				<input type="submit" value="Login" onmouseover="this.style.backgroundColor='#708090';" onmouseout="this.style.backgroundColor='';" >
+
+				<!--<div class="managerLB"><a href="/manager.html">Login as Manager</a></div>-->
+			</form>
+		</div>
+
+
+		<!-- register page-->
+		<div class="register-form" id="registerPage" style="display: none">
+			<span class="close-container" onclick="disappear()">
+			  <span class="leftright"></span>
+			  <span class="rightleft"></span>
+			</span>
+			<h1>Set up a new account</h1>
+				<div class="register-form">
+				<form action="/register" method="POST">
+					<input type="text" name="username" placeholder="Username" required>
+					<input type="password" name="password" placeholder="Password" required>
+					<input type="password" name="password2" placeholder="Re-enter your password" required>
+					<!--<input type="text" name="priviledges" placeholder="Account type (manager: input 0, user input 1)" required>-->
+					<br>
+					<select name="AccountType" size="1">
+						<option value='0'>Register as a Manager</option>
+						<option value='1'>Register as an User</option>
+					</select>
+					<br />
+					<br />
+					<br />
+					<input type="submit" onmouseover="
+					this.style.backgroundColor='#708090';" onmouseout="this.style.backgroundColor='';"
+					value = "Register now">
+					<br />
+
+					</div>
+			</form>
+
+		</div>
+
+
+
+
+
+
+
+
+
+		<!-- Register -->
+		<a
+		style="display: "
+		id="Rtext"
+		onmouseover="this.style.color='#191970';" onmouseout="this.style.color='';"
+
+		href="javascript:display()"
+		style="display: """>No account? Register now
+		</a>
+
+	</div>
+	</body>
+
+
+
+
+	<script>
+		var Lpage=document.getElementById("all");
+        var Rpage=document.getElementById("registerPage");
+        var Rtext=document.getElementById("Rtext");
+
+		function display(){
+        if(Lpage.style.display==""){
+            Lpage.style.display="none";
+            Rpage.style.display="";
+            Rtext.style.display="none";
+      }
+   }
+
+   		function disappear(){
+		if(Lpage.style.display=="none"){
+            Rpage.style.display="none";
+            Lpage.style.display="";
+            Rtext.style.display="";
+     		}
+   		}
+
+
+
+
+
+	</script>
+</html>
